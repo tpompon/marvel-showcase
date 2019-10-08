@@ -11,11 +11,13 @@ const Pagination = () => {
   const context = useContext(Consumer)
 
   const handleSelection = (e) => {
-    e.target.classList.add('pagination-case-enabled')
-    context.updatePagination(e.target.innerHTML)
-    if (selection)
-      selection.classList.remove('pagination-case-enabled')
-    updateSelection(e.target)
+    if (e.target !== selection) {
+      e.target.classList.add('pagination-case-enabled')
+      context.updatePagination(e.target.innerHTML)
+      if (selection)
+        selection.classList.remove('pagination-case-enabled')
+      updateSelection(e.target)
+    }
   }
 
   return (

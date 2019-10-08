@@ -4,18 +4,18 @@ export const Context = createContext(true)
 
 class Provider extends Component {
 
-    state = {
-      pagination: "",
-      updatePagination: (pagination) => this.setState({ pagination })
-    }
+  state = {
+    pagination: "A",
+    updatePagination: (pagination) => this.setState({ pagination })
+  }
 
   render() {
     return (
-    <Context.Provider value={ this.state }>
-        { this.props.children }
-    </Context.Provider>
-  )
-}
+      <Context.Provider value={ this.state }>
+          { this.props.children }
+      </Context.Provider>
+    )
+  }
 
 }
 

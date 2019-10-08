@@ -60,6 +60,12 @@
   font-size: 20px;
 }
 
+.character-thumb {
+  width: 500px;
+  height: 800px;
+  object-fit: cover;
+}
+
 .pagination-case {
   margin: 3px 1px;
   padding: 10px 15px;
