@@ -3,6 +3,7 @@ import api from '../api'
 
 import SuperCard from '../components/SuperCard'
 import Pagination from '../components/Pagination'
+import Loader from '../components/Loader'
 
 const CharactersList = () => {
 
@@ -31,7 +32,7 @@ const CharactersList = () => {
               })
             }
             </div>
-        ) : "Loading characters on API..."
+        ) : <Loader />
       }
     </div>
   )

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router";
 import api from '../api'
 
+import Loader from '../components/Loader'
+
 const Character = () => {
 
   const { id } = useParams();
@@ -29,7 +31,7 @@ const Character = () => {
             />
             <p>{character.description}</p>
           </div>
-        ) : "Loading character"
+        ) : <Loader />
       }
     </div>
   )
