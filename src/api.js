@@ -8,6 +8,9 @@ const requests = {
   characters: {
     get: (offset) => axios.get(`${apiURI}/public/characters?offset=${offset}&apikey=${apiKey}`)
   },
+  charactersStartsWith: {
+    get: (string, offset) => axios.get(`${apiURI}/public/characters?nameStartsWith=${string}&offset=${offset}&apikey=${apiKey}`)
+  },
   character: {
     get: (id) => axios.get(`${apiURI}/public/characters/${id}?apikey=${apiKey}`)
   }

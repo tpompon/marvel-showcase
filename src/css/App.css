@@ -1,3 +1,12 @@
+::-webkit-scrollbar {
+  background: black;
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #EC1D24;
+  border-radius: 10px;
+}
+
 .App {
   background: rgb(248, 248, 248);
   min-height: 100vh;
@@ -66,6 +75,21 @@
 .pagination-case-enabled {
   background-color: #EC1D24;
   color: white;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: box-shadow .3s ease-in-out;
+  background-color: #EC1D24;
+}
+.scroll-to-top:hover {
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(235, 29, 36, .5);
 }
 
 /* Generic classes */

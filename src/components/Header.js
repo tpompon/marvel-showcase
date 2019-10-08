@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { ReactComponent as Logo } from '../svg/marvel_logo.svg';
+import { ReactComponent as Logo } from '../svg/marvel-logo.svg';
 
 const Header = () => {
   return (
