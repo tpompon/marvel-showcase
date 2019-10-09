@@ -29,6 +29,7 @@ const CharactersList = () => {
   useEffect(() => {
     updateCharacters(null)
     updateOffset(0)
+    setMaxOffsetReached(false)
     fetchData()
     // eslint-disable-next-line
   }, [pagination])
@@ -60,6 +61,7 @@ const CharactersList = () => {
   const handleScroll = () => {
     const limit = document.body.offsetHeight - window.innerHeight;
 
+    console.log(window.scrollY, limit - 50)
     if (window.scrollY >= limit - 50)
       updateOffset(prevOffset => prevOffset + 20)
   }
