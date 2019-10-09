@@ -4,14 +4,15 @@ import { Consumer } from '../store'
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-const Pagination = () => {
+const Pagination = (props) => {
 
   const [selection, updateSelection]  = useState(null)
 
   const context = useContext(Consumer)
 
   const handleSelection = (e) => {
-    if (e.target !== selection) {
+    props.func(false)
+    if (e.target !== selection && props.reqEnded) {
       e.target.classList.add('pagination-case-enabled')
       context.updatePagination(e.target.innerHTML)
       if (selection)

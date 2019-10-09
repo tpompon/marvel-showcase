@@ -35,13 +35,61 @@ const Character = () => {
               />
             </div>
             <div className="col" style={{width: '50%'}}>
-              <h2 style={{fontWeight: 'bold', fontSize: 48}}>{character.name}</h2>
-              <p>{character.description !== "" ? character.description : "No description"}</p>
-              <div className="row">
+              <h2 className="mb-2" style={{fontWeight: 'bold', fontSize: 48}}>{character.name}</h2>
+              <p className="mb-2">{character.description !== "" ? character.description : "No description"}</p>
+              <div className="col mb-2">
+                <h3 className="title-category mb-2">Comics</h3>
+                <ul>
+                {
+                  character.comics && character.comics.items.length > 0 ? (
+                    character.comics.items.map((item, index) => (
+                      <li className="mb-1" key={`comics-item-${index}`}>{item.name}</li>
+                    ))
+                  ) : <p>No entries</p>
+                }
+                </ul>
+              </div>
+              <div className="col mb-2">
+                <h3 className="title-category mb-2">Series</h3>
+                <ul>
+                {
+                  character.series && character.series.items.length > 0 ? (
+                    character.series.items.map((item, index) => (
+                      <li className="mb-1" key={`series-item-${index}`}>{item.name}</li>
+                    ))
+                  ) : <p>No entries</p>
+                }
+                </ul>
+              </div>
+              <div className="col mb-2">
+                <h3 className="title-category mb-2">Stories</h3>
+                <ul>
+                {
+                  character.stories && character.stories.items.length > 0 ? (
+                    character.stories.items.map((item, index) => (
+                      <li className="mb-1" key={`stories-item-${index}`}>{item.name}</li>
+                    ))
+                  ) : <p>No entries</p>
+                }
+                </ul>
+              </div>
+              <div className="col mb-2">
+                <h3 className="title-category mb-2">Events</h3>
+                <ul>
+                {
+                  character.events && character.events.items.length > 0 ? (
+                    character.events.items.map((item, index) => (
+                      <li className="mb-1" key={`events-item-${index}`}>{item.name}</li>
+                    ))
+                  ) : <p>No entries</p>
+                }
+                </ul>
+              </div>
+              <div className="row mt-2">
               {
                 character.urls.map((url, index) => (
                   <a className="mr-1" href={url.url} key={`${url.type}-${index}`} rel="noopener noreferrer" target="_blank">
-                    <Button content={url.type} />
+                    <Button content={url.type} className="capitalize" />
                   </a>
                 ))
               }

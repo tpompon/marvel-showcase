@@ -11,6 +11,9 @@ const CharactersList = () => {
 
   const [characters, updateCharacters] = useState(null)
   const [offset, updateOffset] = useState(0)
+  const [reqEnded, setReqEnded] = useState(false)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const [maxOffsetReached, setMaxOffsetReached] = useState(false)
 
   const context = useContext(Consumer)
   const { pagination } = context
@@ -25,15 +28,40 @@ const CharactersList = () => {
 
   useEffect(() => {
     updateCharacters(null)
+    updateOffset(0)
     fetchData()
     // eslint-disable-next-line
   }, [pagination])
+
+  useEffect(() => {
+    if (characters) {
+      setReqEnded(true)
+      setLoadingMore(false)
+    }
+    // eslint-disable-next-line
+  }, [characters])
+
+  useEffect(() => {
+    const loadMore = async () => {
+      const charactersReq = await api.charactersStartsWith.get(pagination, offset)
+      if (charactersReq.data.data.results && characters)
+        updateCharacters(prevArray => ([ ...prevArray, ...charactersReq.data.data.results ]))
+      if (charactersReq.data.data.results.length < 20)
+        setMaxOffsetReached(true)
+    }
+
+    if (!maxOffsetReached) {
+      setLoadingMore(true)
+      loadMore()
+    }
+    // eslint-disable-next-line
+  }, [offset])
 
   const handleScroll = () => {
     const limit = document.body.offsetHeight - window.innerHeight;
 
     if (window.scrollY === limit)
-      loadMoreCharacters()
+      updateOffset(prevOffset => prevOffset + 20)
   }
 
   const fetchData = async () => {
@@ -41,18 +69,12 @@ const CharactersList = () => {
     updateCharacters(characters.data.data.results)
   }
 
-  const loadMoreCharacters = async () => {
-    updateOffset(prevOffset => prevOffset + 20)
-
-    const charactersReq = await api.charactersStartsWith.get(pagination, "20") // replace with offset
-    updateCharacters(prevArray => ([ ...prevArray, ...charactersReq.data.data.results ]))
-  }
-
   return (
     <div>
-      <Pagination />
+      <Pagination reqEnded={ reqEnded } func={ setReqEnded } />
       {
         characters ? (
+          <div>
             <div className="characters-list row center-h">
             {
               characters.map((character, index) => (
@@ -60,6 +82,8 @@ const CharactersList = () => {
               ))
             }
             </div>
+            { loadingMore ? <div className="mb-3" style={{textAlign: 'center'}}>Loading...</div> : null }
+          </div>
         ) : <Loader />
       }
     </div>
