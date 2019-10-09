@@ -50,7 +50,7 @@ const CharactersList = () => {
         setMaxOffsetReached(true)
     }
 
-    if (!maxOffsetReached) {
+    if (!maxOffsetReached && offset !== 0) {
       setLoadingMore(true)
       loadMore()
     }
@@ -60,7 +60,7 @@ const CharactersList = () => {
   const handleScroll = () => {
     const limit = document.body.offsetHeight - window.innerHeight;
 
-    if (window.scrollY === limit)
+    if (window.scrollY >= limit - 50)
       updateOffset(prevOffset => prevOffset + 20)
   }
 
