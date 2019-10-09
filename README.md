@@ -1,6 +1,8 @@
 # Marvel Showcase
 
-React App for Kairos Fire using the Marvel API to show informations about all the characters
+React App for Kairos Fire using the Marvel API to show informations about all the characters.
+
+![Marvel Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Marvel-Comics-Logo.svg/411px-Marvel-Comics-Logo.svg.png)
 
 ## Instructions to start the app
 
