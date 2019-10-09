@@ -22,3 +22,8 @@ React App for Kairos Fire using the Marvel API to show informations about all th
 ## Requirements
 
 - NodeJS
+
+## Good to know
+
+- API could be a bit longer to respond
+- API Key is limited to 300 requests per day
